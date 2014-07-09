@@ -1,0 +1,44 @@
+default vesamenu.c32
+prompt 0
+timeout 50
+ONTIMEOUT local
+
+menu title ########## PXE Boot Menu ##########
+label local
+menu label ^0) Boot local hard drive
+localboot 0
+
+label 1
+menu label ^1) Install CentOS 6.5 x86_64
+kernel centos/6.5/x86_64/vmlinuz
+append initrd=centos/6.5/x86_64/initrd.img ks=http://10.20.0.99/centos/kickstarts/6.5.x86_64.ks
+
+label 2
+menu label ^2) Install CentOS 6.5 i386
+kernel centos/6.5/i386/vmlinuz
+append initrd=centos/6.5/i386/initrd.img ks=http://10.20.0.99/centos/kickstarts/6.5.i386.ks
+
+label 3
+menu label ^3) Install CentOS 7 x86_64
+kernel centos/7/x86_64/vmlinuz
+append initrd=centos/7/x86_64/initrd.img ks=http://10.20.0.99/centos/kickstarts/7.x86_64.ks
+
+label 4
+menu label ^4) Install Ubuntu Server 12.04 amd64
+kernel ubuntu/12.04/amd64/linux
+append vga=788 initrd=ubuntu/12.04/amd64/initrd.gz ksdevice=eth0 preseed/url=http://10.20.0.99/ubuntu/precise.preseed locale=en_US console-keymaps-at/keymap=us console-setup/ask_detect=false console-setup/layoutcode=us keyboard-configuration/layout=USA keyboard-configuration/variant=USA hostname=some-special-name domain=your.domain
+
+label 5
+menu label ^5) Install Ubuntu Server 12.04 i386
+kernel ubuntu/12.04/i386/linux
+append vga=788 initrd=ubuntu/12.04/i386/initrd.gz ksdevice=eth0 preseed/url=http://10.20.0.99/ubuntu/precise.preseed locale=en_US console-keymaps-at/keymap=us console-setup/ask_detect=false console-setup/layoutcode=us keyboard-configuration/layout=USA keyboard-configuration/variant=USA hostname=some-special-name domain=your.domain
+
+label 6
+menu label ^6) Install Ubuntu Server 14.04 amd64
+kernel ubuntu/14.04/amd64/linux
+append vga=788 initrd=ubuntu/14.04/amd64/initrd.gz ksdevice=eth0 preseed/url=http://10.20.0.99/ubuntu/trusty.preseed locale=en_US console-keymaps-at/keymap=us console-setup/ask_detect=false console-setup/layoutcode=us keyboard-configuration/layout=USA keyboard-configuration/variant=USA hostname=some-special-name domain=your.domain
+
+label 7
+menu label ^7) Install Ubuntu Server 14.04 i386
+kernel ubuntu/14.04/i386/linux
+append vga=788 initrd=ubuntu/14.04/i386/initrd.gz ksdevice=eth0 preseed/url=http://10.20.0.99/ubuntu/trusty.preseed locale=en_US console-keymaps-at/keymap=us console-setup/ask_detect=false console-setup/layoutcode=us keyboard-configuration/layout=USA keyboard-configuration/variant=USA hostname=some-special-name domain=your.domain
