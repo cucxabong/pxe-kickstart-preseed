@@ -1,0 +1,69 @@
+# Network configuration
+d-i netcfg/choose_interface select eth0
+d-i netcfg/dhcp_timeout string 60
+d-i netcfg/get_hostname string unassigned-hostname
+d-i netcfg/get_hostname seen true
+
+# Security
+d-i apt-setup/services-select multiselect security
+d-i apt-setup/security_host string mirrors.digipower.vn
+d-i apt-setup/security_path string /ubuntu/archive
+#d-i apt-setup/use_mirror boolean false
+
+# Clock and time zone setup
+d-i clock-setup/utc boolean true
+d-i time/zone string Asia/Ho_Chi_Minh
+
+d-i debconf debconf/frontend select Noninteractive
+d-i pkgsel/install-language-support boolean false
+
+
+# Partitioning
+d-i partman-auto/disk string /dev/sda
+d-i partman-auto/method string regular
+d-i partman-auto/expert_recipe string	\
+boot-root ::	\
+	500 50	500 ext4	\
+		$primary{ } $bootable{ }	\
+		method{ format } format{ }	\
+		use_filesystem{ } filesystem{ ext4 }	\
+		mountpoint{ /boot } \
+	.	\
+	2048 100 2048 liux-swap \
+                method{ swap } format{ } \
+	. \
+	2048 1000 10000000 ext4 \
+		method{ format } format{ } \
+		use_filesystem{ } filesystem{ ext4 } \
+		mountpoint{ / } \
+	. 
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+
+# Create root passwd
+d-i passwd/make-user boolean false
+d-i passwd/root-password-crypted password $1$84W.tN9l$L.YGat9jSVLOZKHaYMk640
+# printf "r00tme" | mkpasswd -s -m md5
+user-setup-udeb passwd/root-login boolean true
+
+# Source to get pakages
+d-i mirror/country string manual
+d-i mirror/http/hostname string mirrors.digipower.vn
+d-i mirror/http/directory string /ubuntu/archive/
+d-i mirror/http/proxy string
+
+# Package Selection
+d-i grub-installer/only_debian boolean true
+d-i pkgsel/upgrade select none
+d-i pkgsel/update-policy select none
+d-i pkgsel/updatedb boolean true
+tasksel tasksel/first multiselect minimal
+d-i pkgsel/include string openssh-server apt screen wget vim
+d-i finish-install/reboot_in_progress note
+
+d-i preseed/late_command string \
+in-target mv /etc/apt/sources.list /etc/apt/sources.list.bk ;\
+in-target wget http://10.20.0.99/ubuntu/14.04/sources.list -O /etc/apt/sources.list ;\
+in-target apt-get update
