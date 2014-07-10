@@ -103,9 +103,9 @@ server {
 service nginx restart
 ```
 
-#5. Tạo cấu trúc file/thư mục cho PXE Boot
+#5. Tạo cấu trúc file/thư mục
 
-###5.1 Tạo cấu trúc thư mục
+###Tạo cấu trúc thư mục
 ```
 mkdir -p /var/pxe/tftpboot/ubuntu/12.04/{amd64,i386}
 mkdir -p /var/pxe/tftpboot/ubuntu/14.04/{amd64,i386}
@@ -114,7 +114,7 @@ mkdir -p /var/pxe/tftpboot/centos/7/x86_64
 mkdir /var/pxe/tftpboot/centos/kickstarts
 ```
 
-###5.2 Tạo kernel và RAM disk
+###Tạo kernel và RAM disk
 ```
 cd /var/pxe/tftpboot/centos/6.5/
 wget http://mirrors.digipower.vn/centos/6.5/os/i386/images/pxeboot/initrd.img -O i386/initrd.img
@@ -143,7 +143,7 @@ wget http://mirrors.digipower.vn/ubuntu/archive/dists/trusty/main/installer-amd6
 wget http://mirrors.digipower.vn/ubuntu/archive/dists/trusty/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/linux -O amd64/linux
 ```
 
-###5.3 Tạo kickstart/preceed files
+###Tạo kickstart/preceed files
 ```
 # CentOS 6.5 x86_64 kickstart
 wget https://raw.githubusercontent.com/d0m0reg00dthing/pxe-kickstart-preseed/master/centos/kickstarts/6.5.x86_64.ks -O /var/pxe/tftpboot/centos/kickstarts/6.5.x86_64.ks
