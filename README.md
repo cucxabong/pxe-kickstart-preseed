@@ -167,4 +167,5 @@ wget https://raw.githubusercontent.com/d0m0reg00dthing/pxe-kickstart-preseed/mas
 
 # 6. Booting
 Bây giờ bạn chỉ cần cắm server vào chung switch (chung mạng) với PXE Server (10.20.0.99) và chỉnh sửa file /var/pxe/tftpboot/pxelinux.cfg/default để chọn lại 'default boot option' để cài trên hàng loạt server là xong.
+
 Trên chỉ là cấu hình cơ bản, PXE còn có cơ chế tạo ra các boot menu khác nhau dựa vào địa chỉ MAC và địa chỉ IP (Cách này cụ Mirantis đang làm cho Fuel Openstack), cái này thì các bạn phải chịu khó tìm tòi thêm trên Google. Mình xin kết thúc bài ở đây.
