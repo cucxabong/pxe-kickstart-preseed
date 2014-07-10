@@ -7,13 +7,13 @@ OS |  Ubuntu 12.04 amd64
 eth0 | 10.20.0.99/24
 eth1 | Internet Access
 
-**Vai trò**
+**Vai trò:**
 - DHCP Server
 - Internet Gateway
 - TFTP Server
 - Webserver 
 
-**1.1 Cấu hình Internet Gateway**
+**Cấu hình Internet Gateway**
 ```
 sed -i -r -e "s/^(#)?\ ?net.ipv4.ip_forward.*/net.ipv4.ip_forward = 1/" /etc/sysctl.conf 
 sysctl -p
@@ -71,7 +71,7 @@ ps aux | grep tftp
 ```
 10:14   0:00 /usr/sbin/in.tftpd --listen --user tftp --address 0.0.0.0:69 --secure /var/pxe/tftpboot
 ```
-**3.1 Chuẩn bị file phục vụ cho quá trình boot từ TFTP**
+**Chuẩn bị file phục vụ cho quá trình boot từ TFTP**
 ```
 mkdir -p /var/pxe/tftpboot/pxelinux.cfg
 cd /var/pxe/tftpboot/
