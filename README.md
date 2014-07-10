@@ -7,7 +7,7 @@ OS |  Ubuntu 12.04 amd64
 eth0 | 10.20.0.99/24
 eth1 | Internet Access
 
-###Vai trò
+**Vai trò**
 - DHCP Server
 - Internet Gateway
 - TFTP Server
