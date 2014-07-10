@@ -1,5 +1,9 @@
 pxe-kickstart-preseed
 ==============
+
+#0. Nhu cầu
+Bài này là 1 note nhỏ về cách cài đặt OS (gồm có CentOS 6.5/7, Ubuntu Server 12.04/14.04) thông qua mạng [sử dụng PXE](http://en.wikipedia.org/wiki/Preboot_Execution_Environment) và [Ubuntu preseed](https://help.ubuntu.com/12.04/installation-guide/i386/preseed-intro.html) và [RedHat Kickstart](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/5/html/Installation_Guide/ch-kickstart2.html#s1-kickstart2-whatis) để tự động làm 1 số thao tác như chọn Language/Keyboard Layout/Partitioning HDD... để tự động hoàn toàn từ lúc bật Server cho tới khi OS được cài xong, giúp giảm thời gian cài đặt OS và nó cũng 'pro' hơn nữa chứ :).
+
 #1. Cài đặt PXE Server#
 
 OS |  Ubuntu 12.04 amd64
@@ -161,3 +165,6 @@ wget https://raw.githubusercontent.com/d0m0reg00dthing/pxe-kickstart-preseed/mas
 wget https://raw.githubusercontent.com/d0m0reg00dthing/pxe-kickstart-preseed/master/ubuntu/trusty.preseed -O /var/pxe/tftpboot/ubuntu/trusty.preseed
 ```
 
+# 6. Booting
+Bây giờ bạn chỉ cần cắm server vào chung switch (chung mạng) với PXE Server (10.20.0.99) và chỉnh sửa file /var/pxe/tftpboot/pxelinux.cfg/default để chọn lại 'default boot option' để cài trên hàng loạt server là xong.
+Trên chỉ là cấu hình cơ bản, PXE còn có cơ chế tạo ra các boot menu khác nhau dựa vào địa chỉ MAC và địa chỉ IP (Cách này cụ Mirantis đang làm cho Fuel Openstack), cái này thì các bạn phải chịu khó tìm tòi thêm trên Google. Mình xin kết thúc bài ở đây.
