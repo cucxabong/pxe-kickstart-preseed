@@ -1,6 +1,6 @@
 pxe-kickstart-preseed
 ==============
-**1. Cài đặt PXE Server**
+#1. Cài đặt PXE Server#
 
 OS |  Ubuntu 12.04 amd64
 --- | -----
@@ -10,8 +10,8 @@ eth1 | Internet Access
 **Vai trò:**
 - DHCP Server
 - Internet Gateway
-- Local Repository
 - TFTP Server
+- Webserver 
 
 **1.1 Cấu hình Internet Gateway**
 ```
