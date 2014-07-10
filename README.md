@@ -20,7 +20,7 @@ sysctl -p
 iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 ```
 
-**2. Cài đặt DHCP Server**
+#2. Cài đặt DHCP Server
 ```
 apt-get install isc-dhcp-server -y
 ```
@@ -41,7 +41,7 @@ subnet 10.20.0.0 netmask 255.255.255.0 {
 service isc-dhcp-server restart
 ```
 
-**3. Cài đặt TFTP Server**
+#3. Cài đặt TFTP Server
 ```
 apt-get install tftpd-hpa -y
 ```
@@ -80,7 +80,7 @@ wget http://mirrors.digipower.vn/ubuntu/archive/dists/trusty/main/installer-amd6
 wget https://raw.githubusercontent.com/d0m0reg00dthing/pxe-kickstart-preseed/master/pxelinux.cfg/default -O pxelinux.cfg/default
 ```
 
-**4. Cài đặt Web Server**
+#4. Cài đặt Web Server
 ```
 apt-get install nginx -y
 ```
@@ -103,7 +103,7 @@ server {
 service nginx restart
 ```
 
-**5. Tạo cấu trúc file/thư mục cho PXE Boot**
+#5. Tạo cấu trúc file/thư mục cho PXE Boot
 
 ###5.1 Tạo cấu trúc thư mục
 ```
