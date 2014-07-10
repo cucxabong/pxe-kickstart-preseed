@@ -1,4 +1,5 @@
 pxe-kickstart-preseed
+==============
 1. Cài đặt PXE Server
 2. Cài đặt DHCP Server
 3. Cài đặt TFTP Server
